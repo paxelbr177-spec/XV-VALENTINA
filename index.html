@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentina Aylin Pereyra | Mis 15 Años 🏰✨</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <!-- Custom Disney Theme Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Canvas Confetti & Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+</head>
+<body class="disney-bg text-purple-100">
+
+  <!-- Interactive Pixie Dust Canvas Background -->
+  <canvas id="stardust-canvas"></canvas>
+
+  <!-- Floating Audio & Settings Header -->
+  <header class="fixed top-4 right-4 z-50 flex items-center gap-3">
+    <!-- Ambient Fairytale Music Toggle -->
+    <button id="btn-audio-toggle" class="royal-card px-4 py-2 flex items-center gap-2 border-gold-glow hover:border-gold-glow-strong text-amber-200 transition-all text-xs font-semibold cursor-pointer shadow-lg" title="Música ambiental de cuento de hadas">
+      <span class="text-amber-400">🎵</span>
+      <span class="font-serif tracking-wider uppercase hidden sm:inline">Música de Ensueño</span>
+    </button>
+    <!-- Supabase Configuration Gear -->
+    <button id="btn-open-supabase-modal" class="royal-card p-2.5 border-gold-glow hover:border-gold-glow-strong text-amber-300 transition-all cursor-pointer shadow-lg" title="Configurar Supabase">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <!-- ========================================================
+       SECCIÓN 1: INICIO (PORTADA WEB DISNEY CON FOTO PORTADA WEB)
+       ======================================================== -->
+  <section id="inicio" class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
+    <!-- Castle Background Glow -->
+    <div class="absolute inset-0 bg-radial from-purple-600/20 via-transparent to-transparent pointer-events-none"></div>
+
+    <div class="max-w-4xl w-full mx-auto text-center z-10 space-y-6">
+      <!-- Fairytale Script Welcome -->
+      <div class="space-y-2">
+        <p class="font-script text-3xl sm:text-4xl md:text-5xl text-amber-300 drop-shadow-md">
+          Había una vez... un sueño que se hizo realidad
+        </p>
+        <h1 class="font-royal text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-wider text-gold-shine uppercase">
+          Valentina
+        </h1>
+        <p class="font-serif text-lg sm:text-2xl text-purple-200 tracking-widest font-semibold uppercase">
+          Aylin Pereyra • Mis 15 Años
+        </p>
+      </div>
+
+      <!-- Foto Portada Web con Marco Dorado de Ensueño -->
+      <div class="relative mx-auto max-w-3xl group">
+        <div class="video-frame-royal p-2 sm:p-3">
+          <div class="video-frame-inner relative rounded-2xl overflow-hidden aspect-[16/9] shadow-2xl">
+            <img 
+              src="assets/foto-portada.jpg" 
+              alt="Valentina XV Portada Disney" 
+              class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
+            />
+            <!-- Overlay Shimmer -->
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/80 via-transparent to-transparent flex items-end justify-center p-6">
+              <span class="font-script text-2xl sm:text-3xl text-amber-200 drop-shadow-lg">
+                La noche mágica de mi vida ✨
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- Sparkle Accents -->
+        <span class="absolute -top-3 -left-3 text-3xl animate-bounce">👑</span>
+        <span class="absolute -bottom-3 -right-3 text-3xl animate-pulse">✨</span>
+      </div>
+
+      <!-- Cuenta Regresiva Mágica (Countdown) -->
+      <div class="pt-4 max-w-xl mx-auto">
+        <p id="countdown-label" class="text-xs sm:text-sm uppercase tracking-widest text-amber-300 font-serif mb-3 font-semibold">
+          ⏳ 3 de Noviembre • Cuenta regresiva para la gran fiesta mágica ✨
+        </p>
+        <div class="grid grid-cols-4 gap-3 sm:gap-4">
+          <div class="royal-card p-3 sm:p-4 text-center border-gold-glow">
+            <span id="timer-days" class="block font-royal text-2xl sm:text-3xl text-gold-gradient font-bold">00</span>
+            <span class="text-[10px] sm:text-xs text-purple-200 uppercase font-serif">Días</span>
+          </div>
+          <div class="royal-card p-3 sm:p-4 text-center border-gold-glow">
+            <span id="timer-hours" class="block font-royal text-2xl sm:text-3xl text-gold-gradient font-bold">00</span>
+            <span class="text-[10px] sm:text-xs text-purple-200 uppercase font-serif">Horas</span>
+          </div>
+          <div class="royal-card p-3 sm:p-4 text-center border-gold-glow">
+            <span id="timer-minutes" class="block font-royal text-2xl sm:text-3xl text-gold-gradient font-bold">00</span>
+            <span class="text-[10px] sm:text-xs text-purple-200 uppercase font-serif">Minutos</span>
+          </div>
+          <div class="royal-card p-3 sm:p-4 text-center border-gold-glow">
+            <span id="timer-seconds" class="block font-royal text-2xl sm:text-3xl text-gold-gradient font-bold">00</span>
+            <span class="text-[10px] sm:text-xs text-purple-200 uppercase font-serif">Segundos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Nav Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-6">
+        <a href="#video-seccion" class="btn-gold">
+          <span>👑 Ver Video</span>
+        </a>
+        <a href="#linea-del-tiempo" class="btn-lavender">
+          <span>📖 Línea de Tiempo</span>
+        </a>
+        <a href="#buenos-deseos" class="btn-gold">
+          <span>💌 Buenos Deseos</span>
+        </a>
+        <a href="#espacio-regalos" class="btn-lavender">
+          <span>🎁 Regalos</span>
+        </a>
+        <a href="#muro-fotos" class="btn-gold">
+          <span>📸 Fotos de la Fiesta</span>
+        </a>
+        <a href="#confirmar-presencia" class="btn-lavender">
+          <span>✨ Confirmar Asistencia</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECCIÓN 2: VIDEO DE PRESENTACIÓN (Valentina Aylin Pereyra 15 años (1).mp4)
+       ======================================================== -->
+  <section id="video-seccion" class="relative py-24 px-4 max-w-5xl mx-auto">
+    <div class="text-center space-y-3 mb-10">
+      <span class="text-xs uppercase tracking-widest text-amber-300 font-serif font-bold">Un Momento Especial</span>
+      <h2 class="font-royal text-3xl sm:text-4xl md:text-5xl text-gold-gradient font-bold">
+        Valentina Aylin Pereyra
+      </h2>
+      <p class="font-script text-2xl sm:text-3xl text-purple-200">
+        Cada historia de princesas tiene un momento inolvidable...
+      </p>
+    </div>
+
+    <!-- Video Player con Marco de Castillo Real -->
+    <div class="video-frame-royal p-3 sm:p-4 mx-auto max-w-4xl relative">
+      <!-- Royal Corners -->
+      <div class="royal-corner-tl"></div>
+      <div class="royal-corner-tr"></div>
+      <div class="royal-corner-bl"></div>
+      <div class="royal-corner-br"></div>
+
+      <div class="video-frame-inner rounded-xl overflow-hidden shadow-2xl bg-black">
+        <video 
+          id="valentina-video" 
+          controls 
+          preload="metadata"
+          poster="assets/foto-portada.jpg" 
+          class="w-full h-auto max-h-[600px] mx-auto object-contain"
+        >
+          <source src="assets/video-valentina.mp4" type="video/mp4">
+          Tu navegador no soporta el reproductor de video.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECCIÓN 3: LÍNEA DEL TIEMPO (ERA UNA VEZ... CARRUSEL DE FOTOS)
+       ======================================================== -->
+  <section id="linea-del-tiempo" class="relative py-24 px-4 overflow-hidden">
+    <div class="max-w-6xl mx-auto text-center space-y-3 mb-12">
+      <span class="text-xs uppercase tracking-widest text-amber-300 font-serif font-bold">Recuerdos Inolvidables</span>
+      <h2 class="font-royal text-3xl sm:text-4xl md:text-5xl text-gold-gradient font-bold">
+        Era una vez...
+      </h2>
+      <p class="font-script text-2xl sm:text-3xl text-purple-200">
+        Momentos mágicos en mi camino a los 15 ✨
+      </p>
+    </div>
+
+    <!-- Swiper 3D Coverflow Carousel -->
+    <div class="swiper timeline-swiper max-w-6xl mx-auto px-4">
+      <div class="swiper-wrapper">
+        
+        <!-- Foto 1 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-1.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-1.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-2.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-2.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-3.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-3.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 4 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-4.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-4.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 5 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-5.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-5.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 6 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-6.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-6.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 7 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-7.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-7.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 8 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-8.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-8.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 9 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-9.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-9.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 10 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-10.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-10.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 11 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-11.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-11.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 12 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-12.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-12.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 13 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-13.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-13.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 14 -->
+        <div class="swiper-slide photo-card-trigger cursor-pointer group" data-src="assets/timeline/foto-14.png" data-title="Recuerdo de Valentina">
+          <div class="relative w-full h-full">
+            <img src="assets/timeline/foto-14.png" alt="Recuerdo de Valentina" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+              <span class="btn-gold text-xs py-2 px-4 shadow-lg">🔍 Ampliar foto</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Arrows & Pagination -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    
+    <p class="text-center text-xs text-purple-300/80 font-serif mt-4">
+      ✨ Desliza o toca cualquier foto para ampliarla en alta definición ✨
+    </p>
+  </section>
+
+  <!-- ========================================================
+       SECCIÓN 4: RINCÓN DE LOS BUENOS DESEOS (SUPABASE & LOCAL)
+       ======================================================== -->
+  <section id="buenos-deseos" class="relative py-24 px-4 max-w-5xl mx-auto">
+    <div class="text-center space-y-3 mb-12">
+      <span class="text-xs uppercase tracking-widest text-amber-300 font-serif font-bold">Libro de Oro</span>
+      <h2 class="font-royal text-3xl sm:text-4xl md:text-5xl text-gold-gradient font-bold">
+        Rincón de los Buenos Deseos
+      </h2>
+      <p class="font-script text-2xl sm:text-3xl text-purple-200">
+        Aquí puedes dejar tu saludo y bendición para Valentina
+      </p>
+      <!-- Supabase sync indicator -->
+      <div id="supabase-status-badge" class="hidden text-xs text-emerald-300 bg-emerald-950/70 border border-emerald-500/40 rounded-full px-3 py-1 inline-flex items-center mx-auto"></div>
+    </div>
+
+    <!-- Formulario para dejar deseos -->
+    <div class="royal-card p-6 sm:p-8 border-gold-glow max-w-2xl mx-auto mb-16 relative">
+      <div class="royal-corner-tl"></div>
+      <div class="royal-corner-tr"></div>
+      <div class="royal-corner-bl"></div>
+      <div class="royal-corner-br"></div>
+
+      <form id="form-wishes" class="space-y-5">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-amber-200 font-serif mb-2">Tu Nombre / Familia:</label>
+          <input 
+            type="text" 
+            id="wish-name" 
+            placeholder="Ej: Tía Mariana, Familia Gómez, Lucas..." 
+            required 
+            class="w-full bg-purple-950/80 border border-amber-400/30 rounded-xl px-4 py-3 text-purple-100 placeholder-purple-400/50 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm transition-all"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-amber-200 font-serif mb-2">Elige un detalle mágico:</label>
+          <div class="flex gap-2">
+            <button type="button" data-icon="👑" class="wish-icon-btn text-xl p-2.5 rounded-xl bg-purple-900/50 border border-amber-400/30 border-gold-glow-strong scale-110 transition-transform">👑</button>
+            <button type="button" data-icon="💖" class="wish-icon-btn text-xl p-2.5 rounded-xl bg-purple-900/50 border border-amber-400/30 transition-transform">💖</button>
+            <button type="button" data-icon="✨" class="wish-icon-btn text-xl p-2.5 rounded-xl bg-purple-900/50 border border-amber-400/30 transition-transform">✨</button>
+            <button type="button" data-icon="🌸" class="wish-icon-btn text-xl p-2.5 rounded-xl bg-purple-900/50 border border-amber-400/30 transition-transform">🌸</button>
+            <button type="button" data-icon="🎂" class="wish-icon-btn text-xl p-2.5 rounded-xl bg-purple-900/50 border border-amber-400/30 transition-transform">🎂</button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-amber-200 font-serif mb-2">Tu Mensaje para Valentina:</label>
+          <textarea 
+            id="wish-message" 
+            rows="3" 
+            placeholder="Escribe tus palabras y deseos más hermosos para esta noche mágica..." 
+            required 
+            class="w-full bg-purple-950/80 border border-amber-400/30 rounded-xl px-4 py-3 text-purple-100 placeholder-purple-400/50 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm transition-all resize-none"
+          ></textarea>
+        </div>
+
+        <button 
+          type="submit" 
+          id="wish-submit-btn" 
+          class="btn-gold w-full text-center py-3.5 shadow-lg"
+        >
+          <span>Dejar mi deseo mágico ✨</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Muro de Deseos Recibidos -->
+    <div id="wishes-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Tarjetas renderizadas dinámicamente -->
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECCIÓN 5: ESPACIO DE REGALOS (ALIAS & YA MANDE MI REGALO)
+       ======================================================== -->
+  <section id="espacio-regalos" class="relative py-24 px-4 max-w-4xl mx-auto">
+    <div class="royal-card p-8 sm:p-12 text-center border-gold-glow-strong relative overflow-hidden">
+      <!-- Glow ambient -->
+      <div class="absolute -top-24 -left-24 w-48 h-48 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="space-y-4 max-w-2xl mx-auto">
+        <div class="inline-flex p-4 rounded-full bg-purple-900/80 border border-amber-400/40 text-4xl shadow-inner">
+          🎁
+        </div>
+
+        <h2 class="font-royal text-3xl sm:text-4xl text-gold-gradient font-bold">
+          Espacio Regalitos
+        </h2>
+
+        <!-- Emotive Quote from user's PDF -->
+        <p class="font-script text-2xl sm:text-3xl text-purple-200 leading-relaxed">
+          "El mejor regalo es tu compañía y tu sonrisa en mi fiesta."
+        </p>
+
+        <p class="text-sm sm:text-base text-purple-100/90 font-serif leading-relaxed pt-2">
+          Si deseas colaborar con un presente en efectivo para este nuevo capítulo que comienza:
+        </p>
+
+        <!-- Box de Alias con botón de copiado -->
+        <div class="bg-purple-950/90 border border-amber-400/50 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 mt-6 shadow-xl">
+          <div class="text-left">
+            <span class="text-xs uppercase tracking-wider text-amber-300/80 font-serif block">Alias Bancario / Mercado Pago:</span>
+            <span id="alias-text" class="font-mono text-xl sm:text-2xl font-bold text-amber-200 tracking-wide select-all">stefania.ortega061</span>
+          </div>
+
+          <button id="btn-copy-alias" class="btn-gold text-xs sm:text-sm py-2.5 px-6 whitespace-nowrap">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>
+            </svg>
+            <span>Copiar Alias</span>
+          </button>
+        </div>
+
+        <!-- Botón Ya Mandé Mi Regalo -->
+        <div class="pt-6">
+          <button id="btn-already-sent-gift" class="btn-lavender text-sm sm:text-base py-3 px-8 shadow-xl">
+            <span>✨ Ya Mandé Mi Regalo ✨</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECCIÓN 6: MURO DE RECUERDOS Y FOTOS DE LA FIESTA
+       ======================================================== -->
+  <section id="muro-fotos" class="relative py-24 px-4 max-w-5xl mx-auto">
+    <div class="text-center space-y-3 mb-12">
+      <div class="inline-flex p-3 rounded-full bg-purple-900/80 border border-amber-400/40 text-4xl shadow-inner mb-2">
+        📸
+      </div>
+      <span class="text-xs uppercase tracking-widest text-amber-300 font-serif font-bold block">Recuerdos Inolvidables</span>
+      <h2 class="font-royal text-3xl sm:text-4xl md:text-5xl text-gold-gradient font-bold">
+        ¡Comparte tus Recuerdos!
+      </h2>
+      <p class="font-script text-2xl sm:text-3xl text-purple-200 max-w-2xl mx-auto leading-relaxed">
+        "Otro regalo que voy a querer es que compartas las fotos que saques en la fiesta aquí..."
+      </p>
+      <p class="text-xs sm:text-sm text-purple-300/80 font-serif">
+        Sube tu foto favorita de la fiesta para que quede grabada en el álbum mágico de Valentina ✨
+      </p>
+    </div>
+
+    <!-- Formulario para subir foto -->
+    <div class="royal-card p-6 sm:p-8 border-gold-glow max-w-2xl mx-auto mb-16 relative">
+      <div class="royal-corner-tl"></div>
+      <div class="royal-corner-tr"></div>
+      <div class="royal-corner-bl"></div>
+      <div class="royal-corner-br"></div>
+
+      <form id="form-upload-memory" class="space-y-5">
+        <!-- Dropzone / Selector de Archivo -->
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-amber-200 font-serif mb-2">Selecciona o toma una foto:</label>
+          <input type="file" id="photo-file-input" accept="image/*" class="hidden">
+          
+          <div id="photo-upload-dropzone" class="photo-upload-dropzone p-6 sm:p-8 text-center flex flex-col items-center justify-center gap-3">
+            <div id="dropzone-empty-state" class="flex flex-col items-center gap-2">
+              <span class="text-4xl text-amber-400">✨📷✨</span>
+              <p class="text-sm font-serif text-amber-200 font-medium">Toca aquí o arrastra tu foto</p>
+              <p class="text-xs text-purple-300/70">Puedes elegir desde tu galería o usar la cámara de tu celular</p>
+            </div>
+            
+            <div id="dropzone-preview-state" class="hidden relative max-w-xs w-full">
+              <img id="photo-preview-img" src="" alt="Vista previa" class="w-full h-48 object-cover rounded-xl border border-amber-400/50 shadow-md">
+              <button type="button" id="btn-remove-photo-preview" class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold shadow-md hover:bg-red-700" title="Quitar foto">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-amber-200 font-serif mb-2">Tu Nombre / Familia:</label>
+            <input 
+              type="text" 
+              id="photo-uploader-name" 
+              placeholder="Ej: Tío Carlos, Sofi, Familia Ramos..." 
+              required 
+              class="w-full bg-purple-950/80 border border-amber-400/30 rounded-xl px-4 py-3 text-purple-100 placeholder-purple-400/50 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm transition-all"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-amber-200 font-serif mb-2">Dedicatoria / Momento:</label>
+            <input 
+              type="text" 
+              id="photo-uploader-caption" 
+              placeholder="Ej: ¡Bailando con la cumpleañera! 👑" 
+              class="w-full bg-purple-950/80 border border-amber-400/30 rounded-xl px-4 py-3 text-purple-100 placeholder-purple-400/50 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-sm transition-all"
+            />
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          id="btn-submit-photo-memory" 
+          class="btn-gold w-full text-center py-3.5 shadow-lg"
+        >
+          <span>✨ Publicar Recuerdo en el Muro ✨</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Muro de Fotos Compartidas -->
+    <div id="photos-gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Fotos renderizadas dinámicamente -->
+    </div>
+
+    <!-- Opción secundaria para enviar también por WhatsApp -->
+    <div class="text-center mt-12">
+      <button id="btn-share-photos-wa" class="btn-lavender text-xs sm:text-sm py-2.5 px-6">
+        <span>📲 ¿Prefieres enviarlas por WhatsApp? Haz clic aquí</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECCIÓN 7: CONFIRMACIÓN DE ASISTENCIA (RSVP AL 3537303209)
+       ======================================================== -->
+  <section id="confirmar-presencia" class="relative py-24 px-4 max-w-4xl mx-auto">
+    <div class="royal-card p-8 sm:p-12 text-center border-gold-glow-strong relative">
+      <!-- Disney Crown Header -->
+      <div class="inline-flex p-3 rounded-full bg-emerald-950/80 border border-emerald-400/50 text-4xl mb-4 shadow-lg">
+        👑
+      </div>
+
+      <span class="text-xs uppercase tracking-widest text-amber-300 font-serif font-bold block mb-1">
+        Tu presencia es lo más importante
+      </span>
+      <h2 class="font-royal text-3xl sm:text-5xl text-gold-gradient font-bold mb-3">
+        Confirma tu Presencia
+      </h2>
+      <p class="font-script text-2xl sm:text-3xl text-purple-200 mb-6">
+        Te espero para vivir juntos una noche mágica e inolvidable
+      </p>
+
+      <!-- Teléfono Destacado -->
+      <div class="max-w-md mx-auto space-y-4">
+        <div class="p-4 bg-purple-950/90 border border-emerald-400/40 rounded-2xl flex items-center justify-center gap-3">
+          <!-- WhatsApp Icon -->
+          <svg class="w-7 h-7 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.983.537 1.802.82 2.791.82 3.181 0 5.767-2.587 5.767-5.766.001-3.182-2.585-5.769-5.767-5.769zm3.364 8.163c-.14.394-.816.732-1.127.756-.312.023-.692.05-2.228-.6-1.536-.65-2.518-2.215-2.595-2.317-.078-.103-.625-.83-.625-1.584 0-.754.395-1.125.535-1.266.14-.141.306-.176.408-.176.103 0 .205.001.295.005.094.004.22-.036.344.262.129.309.439 1.071.478 1.149.039.078.065.17.013.273-.051.103-.078.167-.154.257-.078.09-.163.201-.233.27-.078.077-.16.16-.068.318.091.157.406.67 1.135 1.115.39.238.718.391.966.47.25.079.397.068.547-.103.149-.17.64-.744.811-1.001.171-.257.342-.214.575-.128.233.085 1.477.696 1.73.824.254.129.423.192.484.298.061.106.061.616-.079 1.01zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.981-1.308C8.423 21.543 10.154 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+          </svg>
+          <div class="text-left">
+            <span class="text-[11px] uppercase tracking-wider text-purple-300 block font-serif">WhatsApp de Confirmación:</span>
+            <span class="font-mono text-xl sm:text-2xl font-bold text-emerald-300">3537303209</span>
+          </div>
+        </div>
+
+        <div>
+          <input 
+            type="text" 
+            id="rsvp-guest-name" 
+            placeholder="Escribe tu nombre completo o de tu familia" 
+            class="w-full bg-purple-950/80 border border-emerald-400/40 rounded-xl px-4 py-3 text-purple-100 placeholder-purple-400/50 focus:outline-none focus:border-emerald-400 text-sm text-center"
+          />
+        </div>
+
+        <button 
+          id="btn-rsvp-whatsapp" 
+          class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-serif font-bold py-3.5 px-8 rounded-full shadow-xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <span>Confirmar Asistencia por WhatsApp ✨</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER MÁGICO DISNEY
+       ======================================================== -->
+  <footer class="py-12 px-4 border-t border-amber-400/20 text-center relative z-10">
+    <p class="font-script text-3xl text-amber-300 mb-2">Valentina Aylin Pereyra</p>
+    <p class="text-xs uppercase tracking-widest text-purple-300 font-serif">
+      Mis 15 Años • Un recuerdo para toda la vida 👑✨
+    </p>
+  </footer>
+
+  <!-- ========================================================
+       MODAL 1: AGRADECIMIENTO "YA MANDÉ MI REGALO"
+       ======================================================== -->
+  <div id="modal-gift-thanks" class="modal-backdrop fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="royal-card modal-content-box p-8 max-w-md w-full text-center border-gold-glow-strong relative">
+      <button id="close-modal-gift" class="absolute top-4 right-4 text-purple-300 hover:text-amber-300 text-2xl font-bold cursor-pointer">&times;</button>
+      <div class="text-5xl mb-4">💖✨</div>
+      <h3 class="font-royal text-2xl text-gold-gradient font-bold mb-3">
+        ¡Muchísimas Gracias!
+      </h3>
+      <p class="font-serif text-sm text-purple-100 leading-relaxed mb-6">
+        Tu cariño y tu gesto hacen que este nuevo capítulo de Valentina sea aún más mágico y especial.
+      </p>
+      <div class="space-y-3">
+        <button id="btn-whatsapp-gift" class="btn-gold w-full text-sm py-3">
+          <span>Avisar por WhatsApp a Stefania y Valen 📲</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL 2: LIGHTBOX DE FOTOS DE LA LÍNEA DE TIEMPO
+       ======================================================== -->
+  <div id="modal-lightbox" class="modal-backdrop fixed inset-0 z-50 bg-black/90 backdrop-blur-lg flex items-center justify-center p-4">
+    <div class="relative max-w-3xl w-full flex flex-col items-center">
+      <button id="close-lightbox" class="absolute -top-12 right-0 text-amber-300 hover:text-white text-3xl font-bold cursor-pointer">
+        &times; Cerrar
+      </button>
+      <div class="video-frame-royal p-2 rounded-2xl w-full">
+        <img id="lightbox-img" src="" alt="Foto Ampliada" class="w-full max-h-[75vh] object-contain rounded-xl bg-purple-950">
+      </div>
+      <p id="lightbox-title" class="font-royal text-amber-200 text-lg mt-4 font-bold text-center"></p>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL 3: CONFIGURACIÓN RÁPIDA DE SUPABASE
+       ======================================================== -->
+  <div id="modal-supabase-config" class="modal-backdrop fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="royal-card modal-content-box p-6 sm:p-8 max-w-lg w-full text-left border-gold-glow-strong relative">
+      <button id="close-supabase-modal" class="absolute top-4 right-4 text-purple-300 hover:text-amber-300 text-2xl font-bold cursor-pointer">&times;</button>
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">⚙️</span>
+        <div>
+          <h3 class="font-royal text-xl text-gold-gradient font-bold">Conexión a Supabase</h3>
+          <p class="text-xs text-purple-300">Guarda los mensajes de los invitados en tu base de datos Supabase</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 text-sm">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-amber-200 font-serif mb-1">Supabase Project URL:</label>
+          <input id="input-sb-url" type="url" placeholder="https://tu-proyecto.supabase.co" class="w-full bg-purple-950 border border-amber-400/40 rounded-lg p-2.5 text-xs text-purple-100 focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-amber-200 font-serif mb-1">Supabase Anon Key:</label>
+          <input id="input-sb-key" type="password" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." class="w-full bg-purple-950 border border-amber-400/40 rounded-lg p-2.5 text-xs text-purple-100 focus:outline-none focus:border-amber-400">
+        </div>
+
+        <div class="p-3 bg-purple-900/40 border border-amber-400/20 rounded-lg text-xs text-purple-200 space-y-1">
+          <p class="font-bold text-amber-300">💡 Tip:</p>
+          <p>Encuentras estos datos en tu proyecto de Supabase -> <strong>Project Settings -> API</strong>.</p>
+          <p>También hemos creado un archivo <code>supabase_setup.sql</code> en la carpeta del proyecto para crear la tabla <code>buenos_deseos</code> con un solo clic.</p>
+        </div>
+
+        <button id="btn-save-supabase-config" class="btn-gold w-full text-center py-2.5 text-xs">
+          <span>Guardar Configuración de Supabase ✨</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="magic-toast"></div>
+
+  <!-- Swiper.js & Main Script -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

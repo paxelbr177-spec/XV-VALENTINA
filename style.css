@@ -1,0 +1,407 @@
+/* ========================================================
+   ESTILOS DISNEY QUINCEANERA - VALENTINA AYLIN PREYRA 15
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-gold: #f5c042;
+  --color-gold-light: #ffeb99;
+  --color-gold-dark: #aa7a1e;
+  --color-lavender: #c084fc;
+  --color-lavender-light: #f5edff;
+  --color-purple-deep: #120524;
+  --color-purple-royal: #270c48;
+  --color-purple-card: rgba(39, 12, 72, 0.65);
+  --color-card-border: rgba(245, 192, 66, 0.35);
+  --font-royal: 'Cinzel Decorative', 'Cinzel', serif;
+  --font-serif: 'Cinzel', serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-purple-deep);
+  color: #f3f4f6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background Atmosphere */
+.disney-bg {
+  background: radial-gradient(circle at 50% 10%, rgba(93, 31, 148, 0.45) 0%, rgba(20, 5, 40, 0.95) 70%, #0d0218 100%),
+              radial-gradient(circle at 10% 40%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 90% 80%, rgba(245, 192, 66, 0.12) 0%, transparent 50%);
+}
+
+/* Typography Classes */
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-royal {
+  font-family: var(--font-royal);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Golden Gradients & Texts */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fff3b0 0%, #f5c042 50%, #d89614 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(245, 192, 66, 0.3));
+}
+
+.text-gold-shine {
+  background: linear-gradient(90deg, #f5c042 0%, #fff7d6 50%, #f5c042 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.text-lavender-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 40%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Golden Glowing Borders */
+.border-gold-glow {
+  border: 1px solid rgba(245, 192, 66, 0.4);
+  box-shadow: 0 0 20px rgba(245, 192, 66, 0.15), inset 0 0 15px rgba(245, 192, 66, 0.05);
+}
+
+.border-gold-glow-strong {
+  border: 2px solid #f5c042;
+  box-shadow: 0 0 30px rgba(245, 192, 66, 0.4), inset 0 0 20px rgba(245, 192, 66, 0.15);
+}
+
+/* Glassmorphism Cards */
+.royal-card {
+  background: linear-gradient(135deg, rgba(46, 17, 82, 0.75) 0%, rgba(26, 8, 48, 0.85) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(245, 192, 66, 0.25);
+  border-radius: 1.5rem;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 92, 246, 0.15);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.royal-card:hover {
+  border-color: rgba(245, 192, 66, 0.55);
+  box-shadow: 0 20px 45px -5px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 192, 66, 0.25);
+  transform: translateY(-3px);
+}
+
+/* Premium Royal Buttons */
+.btn-gold {
+  background: linear-gradient(135deg, #ffd768 0%, #f5c042 50%, #c48817 100%);
+  color: #1a052e;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(245, 192, 66, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 60%);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(245, 192, 66, 0.6);
+}
+
+.btn-gold:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn-gold:active {
+  transform: translateY(1px);
+}
+
+/* Lavender Magic Button */
+.btn-lavender {
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  color: #ffffff;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.8rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 18px rgba(168, 85, 247, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-lavender:hover {
+  background: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
+  box-shadow: 0 6px 25px rgba(168, 85, 247, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Floating Animations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Canvas Canvas Stardust Layer */
+#stardust-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Swiper Timeline 3D Coverflow Styling */
+.timeline-swiper {
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+.timeline-swiper .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 320px;
+  height: 460px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(245, 192, 66, 0.4);
+  transition: border-color 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .timeline-swiper .swiper-slide {
+    width: 380px;
+    height: 540px;
+  }
+}
+
+.timeline-swiper .swiper-slide-active {
+  border: 2px solid #ffd768;
+  box-shadow: 0 20px 50px rgba(245, 192, 66, 0.45), 0 0 30px rgba(192, 132, 252, 0.4);
+}
+
+.timeline-swiper .swiper-pagination-bullet {
+  background: rgba(245, 192, 66, 0.4);
+  width: 10px;
+  height: 10px;
+  transition: all 0.3s ease;
+}
+
+.timeline-swiper .swiper-pagination-bullet-active {
+  background: #f5c042;
+  width: 28px;
+  border-radius: 6px;
+  box-shadow: 0 0 12px #f5c042;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #f5c042 !dimportant;
+  background: rgba(30, 8, 55, 0.7);
+  backdrop-filter: blur(10px);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 192, 66, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px !important;
+  font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: #f5c042;
+  color: #120524 !important;
+  box-shadow: 0 0 20px rgba(245, 192, 66, 0.6);
+  transform: scale(1.1);
+}
+
+/* Video Frame Royal Styling */
+.video-frame-royal {
+  position: relative;
+  padding: 10px;
+  background: linear-gradient(135deg, #aa7a1e 0%, #ffeb99 30%, #f5c042 50%, #805c10 80%, #ffd768 100%);
+  border-radius: 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(245, 192, 66, 0.3);
+}
+
+.video-frame-inner {
+  border-radius: calc(2rem - 8px);
+  overflow: hidden;
+  background: #000;
+  position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0218;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7e22ce, #f5c042);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f5c042;
+}
+
+/* Toast Notification */
+#magic-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  transform: translateY(120%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#magic-toast.show {
+  transform: translateY(0);
+}
+
+/* Modal Animations */
+.modal-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content-box {
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.open .modal-content-box {
+  transform: scale(1) translateY(0);
+}
+
+/* Royal Corner Accents */
+.royal-corner-tl, .royal-corner-tr, .royal-corner-bl, .royal-corner-br {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: #f5c042;
+  opacity: 0.6;
+}
+.royal-corner-tl { top: 8px; left: 8px; border-top: 2px solid; border-left: 2px solid; }
+.royal-corner-tr { top: 8px; right: 8px; border-top: 2px solid; border-right: 2px solid; }
+.royal-corner-bl { bottom: 8px; left: 8px; border-bottom: 2px solid; border-left: 2px solid; }
+.royal-corner-br { bottom: 8px; right: 8px; border-bottom: 2px solid; border-right: 2px solid; }
+
+/* Photo Memories Wall & Dropzone */
+.photo-upload-dropzone {
+  border: 2px dashed rgba(245, 192, 66, 0.45);
+  background: rgba(43, 13, 80, 0.4);
+  border-radius: 1.25rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.photo-upload-dropzone:hover, .photo-upload-dropzone.dragover {
+  border-color: #ffd768;
+  background: rgba(74, 21, 138, 0.5);
+  box-shadow: 0 0 20px rgba(245, 192, 66, 0.3);
+}
+
+.photo-memory-card {
+  background: linear-gradient(145deg, rgba(46, 15, 82, 0.85) 0%, rgba(22, 6, 42, 0.95) 100%);
+  border: 1px solid rgba(245, 192, 66, 0.35);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-memory-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: #ffd768;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(245, 192, 66, 0.3);
+}
