@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   
   <!-- Custom Disney Theme Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3.2">
   
   <!-- Canvas Confetti & Supabase SDK -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
@@ -53,8 +53,26 @@
         <p class="font-script text-2xl sm:text-4xl md:text-5xl text-amber-300 drop-shadow-md">
           Había una vez... un sueño que se hizo realidad
         </p>
-        <h1 class="hero-title-responsive text-gold-shine uppercase">
-          Valentina Aylin Pereyra
+        <!-- Nombre Completo en una Sola Línea con SVG Vectorial Dinámico (Imposible que se corte en ningún celular) -->
+        <h1 class="w-full max-w-3xl mx-auto px-2 my-1">
+          <span class="sr-only">Valentina Aylin Pereyra</span>
+          <svg viewBox="0 0 1000 85" class="w-full h-auto block mx-auto overflow-visible select-none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="disney-gold-title-svg" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#ffd768" />
+                <stop offset="25%" stop-color="#fff7d6" />
+                <stop offset="50%" stop-color="#f5c042" />
+                <stop offset="75%" stop-color="#fff7d6" />
+                <stop offset="100%" stop-color="#d89614" />
+              </linearGradient>
+              <filter id="gold-shadow-svg" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(245, 192, 66, 0.45)" />
+              </filter>
+            </defs>
+            <text x="500" y="60" text-anchor="middle" font-family="'Cinzel Decorative', 'Cinzel', serif" font-weight="900" font-size="44" letter-spacing="2.5" fill="url(#disney-gold-title-svg)" filter="url(#gold-shadow-svg)">
+              VALENTINA AYLIN PEREYRA
+            </text>
+          </svg>
         </h1>
         <p class="font-serif text-sm min-[400px]:text-base sm:text-2xl md:text-3xl text-purple-200 tracking-widest font-semibold uppercase">
           Mis 15 Años
@@ -699,6 +717,6 @@
 
   <!-- Swiper.js & Main Script -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=3.2"></script>
 </body>
 </html>
